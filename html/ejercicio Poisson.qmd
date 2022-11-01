@@ -1,0 +1,91 @@
+---
+title: "ejercicio Poisson"
+author: "Rubén Pizarro Gurrola"
+format: html
+editor: visual
+---
+
+# ejercicio
+
+Suponemos que estamos en temporada de invierno y queremos ir a esquiar antes de diciembre. La probabilidad que abran las estaciones de esquí antes de diciembre es del 5%.
+
+De las 100 estaciones de esquí, queremos saber la probabilidad de que la estación de esquí más cercana abra antes de diciembre. La valoración de esta estación de esquí es de 6 puntos.
+
+# Cargar librerías
+
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(mosaic) # Gráficos de distribuciones
+library(cowplot) #Imágenes en el mismo renglón
+```
+
+# Cargar funciones personalizadas
+
+```{r echo=TRUE}
+source("https://raw.githubusercontent.com/rpizarrog/probabilidad-y-estad-stica/master/Agosto-Diciembre%202022/funciones/funciones%20para%20distribuciones.R")
+```
+
+# Inicialiazar variables
+
+```{r echo=TRUE}
+media <- 5
+```
+
+# ¿Cual es la probabilidad de x = 6?
+
+```{r echo=TRUE}
+resultado <- f.poisson.all(media = media)
+resultado$g.hist
+```
+
+```{r echo=TRUE}
+prob <- dpois(x = 6, lambda = media)
+prob
+```
+
+# Ejercicio de llamadas
+
+Un centro d servicio (call center) recibe en promedio 2 llamadas por minuto para atención de clientes.
+
+¿Cuál es la probabilidad de recibir exactamente una llamada en un minuto?
+
+# Inicializar variables
+
+```{r echo=TRUE}
+media <- lambda <- 2
+x <- 1
+```
+
+# La probabilida de f(x= 1)
+
+```{r echo=TRUE}
+prob <- dpois(x = x, lambda = media)
+prob
+```
+
+# Usando la función f.pois.all()
+
+```{r}
+resultado = f.poisson.all(media = media)
+
+```
+
+# Densidad
+
+```{r}
+resultado$g.hist.plotly
+```
+
+# Acumulado
+
+```{r}
+resultado$g.acum.plotly
+```
+
+# Tabla de distribución
+
+```{r}
+resultado$tabla
+
+```
